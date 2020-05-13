@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 导头文件 -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- mybatis的核心配置文件 -->
+<configuration>
+	<properties>
+		<property name="driver" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/mytest?useUnicode=true&amp;characterEncoding=utf-8"/>
+		<property name="username" value="root"/>
+		<property name="password" value="888116"/>
+	</properties>
+	<!-- 配置日志的输出方式 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+	<!-- 别名优化 -->
+	<typeAliases>
+		<package name="com.ssm.entity"/>
+	</typeAliases>
+	<!-- 环境，可以配置多个，default：指定采用哪个环境 -->
+	<environments default="development">
+		<!-- id：唯一标识 -->
+		<environment id="development">
+			<!-- 事务管理器，JDBC类型的事务管理器 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源，池类型的数据源 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/mytest?useUnicode=true&amp;characterEncoding=utf-8" />
+				<property name="username" value="root" />
+				<property name="password" value="888116" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<!--<package name="com.ssm.mapper"/>-->
+		<!--<mapper resource="com/shsxt/mapper/UserMapper.xml"></mapper>-->
+		<mapper resource="mappers/UserMapper.xml" />
+		<mapper resource="mappers/UserDaoMapper.xml"/>
+		<mapper resource="mappers/MyMapper.xml"/>
+	</mappers>
+
+
+
+</configuration>
